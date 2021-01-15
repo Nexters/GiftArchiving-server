@@ -1,4 +1,4 @@
-package com.nexters.giftzip.infra.config;
+package com.nexters.giftzip.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
