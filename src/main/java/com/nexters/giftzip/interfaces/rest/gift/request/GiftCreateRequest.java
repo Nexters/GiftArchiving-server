@@ -1,28 +1,17 @@
-package com.nexters.giftzip.interfaces.rest.gift.entity;
+package com.nexters.giftzip.interfaces.rest.gift.request;
 
-import com.nexters.giftzip.interfaces.rest.common.BaseEntity;
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.rest.common.tag.FrameSort;
 import com.nexters.giftzip.interfaces.rest.common.tag.StickerSort;
+import com.nexters.giftzip.interfaces.rest.gift.entity.Sticker;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@Document(collection = "gift_info")
-public class GiftInfoDocument extends BaseEntity {
-
-    @MongoId
-    private String id;
-    private String createdBy;
+public class GiftCreateRequest {
     private String content;
     private Boolean isReceiveGift;
     private String name;
@@ -31,6 +20,7 @@ public class GiftInfoDocument extends BaseEntity {
     private String bgColor;
     private FrameSort frameSort;
     private List<Sticker> sticker;
+    private String createdBy;
     private Category category;
     private Emotion emotion;
     private StickerSort stickerSort;

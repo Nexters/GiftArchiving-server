@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 @EnableMongoAuditing
-@SpringBootApplication(exclude =  {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class GiftZipApplication {
 
     public static void main(String[] args) {
