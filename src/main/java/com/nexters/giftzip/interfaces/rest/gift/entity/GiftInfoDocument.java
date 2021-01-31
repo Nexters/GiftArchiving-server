@@ -3,7 +3,7 @@ package com.nexters.giftzip.interfaces.rest.gift.entity;
 import com.nexters.giftzip.interfaces.rest.common.BaseEntity;
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.FrameSort;
+import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.rest.common.tag.StickerSort;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,6 @@ import java.util.List;
 @NoArgsConstructor
 @Document(collection = "gift_info")
 public class GiftInfoDocument extends BaseEntity {
-
     @MongoId
     private String id;
     private String createdBy;
@@ -29,7 +28,7 @@ public class GiftInfoDocument extends BaseEntity {
     private LocalDateTime receiveDate;
     private String imgUrl;
     private String bgColor;
-    private FrameSort frameSort;
+    private FrameType frameType;
     private List<Sticker> sticker;
     private Category category;
     private Emotion emotion;

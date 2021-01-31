@@ -1,5 +1,5 @@
 package com.nexters.giftzip.interfaces.rest.common.tag;
 
-public enum FrameSort {
+public enum FrameType {
     SQUARE, ARCH
 }

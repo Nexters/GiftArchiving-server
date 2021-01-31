@@ -2,7 +2,7 @@ package com.nexters.giftzip.interfaces.rest.gift.response;
 
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.FrameSort;
+import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.rest.common.tag.StickerSort;
 import com.nexters.giftzip.interfaces.rest.gift.entity.Sticker;
 import lombok.Builder;
@@ -23,7 +23,7 @@ public class GiftDetailResponse {
     private LocalDateTime createdAt;
     private String imgUrl;
     private String bgColor;
-    private FrameSort frameSort;
+    private FrameType frameType;
     private List<Sticker> sticker;
     private Category category;
     private Emotion emotion;
