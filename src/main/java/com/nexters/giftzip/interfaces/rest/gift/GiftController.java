@@ -4,22 +4,30 @@ import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftCreateDtoMapper;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
+import com.nexters.giftzip.interfaces.rest.gift.validator.GiftCreateRequestValidator;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/gift")
 @RequiredArgsConstructor
 public class GiftController {
     private final GiftInfoService giftService;
     private final GiftCreateDtoMapper giftCreateDtoMapper;
     private final ImgRegisterService imgRegisterService;
+    private final GiftCreateRequestValidator validator;
+
 
     @ApiOperation(value = "기록 저장", produces = "multipart/form-data", notes = "선물을 기록합니다.")
-    @PostMapping("/create")
-    public void save(@RequestBody GiftCreateRequest giftCreateRequest, @RequestParam MultipartFile img) {
+    @RequestMapping(path = "/create", method = RequestMethod.POST, produces = {MediaType.MULTIPART_FORM_DATA_VALUE },
+    consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void save(@ModelAttribute("request") GiftCreateRequest giftCreateRequest, @RequestPart MultipartFile img) {
+        validator.validate(giftCreateRequest);
         GiftCreateDto giftCreateDto = giftCreateDtoMapper.entityToResult(giftCreateRequest);
         giftCreateDto.setImgUrl(getFileUrl(img, giftCreateDto.getCreatedBy()));
         giftService.createGiftInfo(giftCreateDto);

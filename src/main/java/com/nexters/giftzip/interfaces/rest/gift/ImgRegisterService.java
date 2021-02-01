@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 
 @Service
 @Slf4j
@@ -25,8 +26,9 @@ public class ImgRegisterService {
 
     public String uploadImgToS3(MultipartFile img, String userToken) {
         try {
-            awsS3Supporter.uploadObject(img, img.getOriginalFilename(), userToken);
-            return s3Url + img.getOriginalFilename();
+            String fileName = img.getOriginalFilename() + new Date().toString();
+            awsS3Supporter.uploadObject(img, fileName, userToken);
+            return s3Url + userToken + "/" + fileName;
         } catch (IOException e) {
             log.error(e.getMessage());
             throw new AwsS3Exception(CommonErrorType.AWS_S3_ERROR);

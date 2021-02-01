@@ -17,7 +17,7 @@ public class UserController {
 
     @ApiOperation(value = "카카오 회원가입", notes = "카카오톡 로그인의 토큰값을 저장합니다.")
     @PostMapping("/kakao/signIn")
-    public UserSignInResponse kakaoSignin(@RequestBody UserSignInRequest request) {
+    public UserSignInResponse kakaoSignIn(@RequestBody UserSignInRequest request) {
         userService.signInUser(request);
         return UserSignInResponse.success();
     }

@@ -1,32 +1,39 @@
 package com.nexters.giftzip.support.exception.handler;
 
-import com.nexters.giftzip.support.exception.AwsS3Exception;
-import com.nexters.giftzip.support.exception.NotFoundException;
-import com.nexters.giftzip.support.exception.ErrorResponse;
+import com.nexters.giftzip.support.exception.HandleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Slf4j
-@RestControllerAdvice
-public class ExceptionResolver {
+public class ExceptionResolver extends AbstractHandlerExceptionResolver {
+    private final int DEFAULT_ERROR = -1;
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseBody
-    public ErrorResponse handleNotFoundException(NotFoundException e, HttpServletRequest request) {
-        return ErrorResponse.of(e.getErrorType().getErrorCode(), e.getErrorType().getDesc());
+    public ExceptionResolver() {
     }
 
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(AwsS3Exception.class)
-    @ResponseBody
-    public ErrorResponse handleS3Exception(AwsS3Exception e) {
-        return ErrorResponse.of(e.getErrorType().getErrorCode(), e.getErrorType().getDesc());
+    @Override
+    protected ModelAndView doResolveException(HttpServletRequest req,
+                                              HttpServletResponse resp, Object handler, Exception ex) {
+        // Call super method to get the ModelAndView
+        Map<String, Object> map = new LinkedHashMap<>();
+        if (ex instanceof HandleException) {
+            map.put("code", ((HandleException) ex).getCommonErrorType().getErrorCode());
+            map.put("reason", ((HandleException) ex).getCommonErrorType().getDesc());
+        } else {
+            map.put("code", DEFAULT_ERROR);
+            map.put("reason", ex.getLocalizedMessage());
+        }
+        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView(), map);
+        mav.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        log.info(ex.getMessage());
+        return mav;
     }
 }

@@ -6,11 +6,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Getter
 @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-public class AwsS3Exception extends RuntimeException{
+public class AwsS3Exception extends RuntimeException implements HandleException{
     private CommonErrorType errorType;
 
     public AwsS3Exception(CommonErrorType commonErrorType){
         super(commonErrorType.getDesc());
         this.errorType = commonErrorType;
+    }
+
+    @Override
+    public CommonErrorType getCommonErrorType() {
+        return errorType;
     }
 }
