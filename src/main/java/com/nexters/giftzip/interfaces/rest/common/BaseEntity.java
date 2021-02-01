@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Getter
 public abstract class BaseEntity {
-
     @CreatedDate
     protected LocalDateTime createdAt;
 

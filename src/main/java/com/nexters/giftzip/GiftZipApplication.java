@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
-@EnableMongoAuditing
 @SpringBootApplication
 @PropertySource("classpath:aws.properties")
 public class GiftZipApplication {
