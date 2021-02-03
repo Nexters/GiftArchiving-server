@@ -43,7 +43,7 @@ public class GiftController {
     }
 
     @ApiOperation(value = "태그 검색", notes = "태그 검색")
-    @GetMapping("/{createdBy}")
+    @GetMapping("/{createdBy}/tag")
     @ResponseBody
     public GiftListResponse getGiftInfoByTag(@PathVariable String createdBy) {
         return null;
