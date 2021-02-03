@@ -33,7 +33,7 @@ public class ExceptionResolver extends AbstractHandlerExceptionResolver {
         }
         ModelAndView mav = new ModelAndView(new MappingJackson2JsonView(), map);
         mav.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-        log.info(ex.getMessage());
+        ex.printStackTrace();
         return mav;
     }
 }

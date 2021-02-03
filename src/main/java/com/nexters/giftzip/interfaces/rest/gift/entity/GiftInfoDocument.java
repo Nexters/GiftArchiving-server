@@ -5,6 +5,7 @@ import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.rest.common.tag.StickerSort;
+import com.querydsl.core.annotations.QueryEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@QueryEntity
 @Document(collection = "gift_info")
 public class GiftInfoDocument extends BaseEntity {
     @MongoId

@@ -1,12 +1,9 @@
-buildscript {
-    ext {
-        query_dsl_version = '4.3.1'
-    }
-}
+
 plugins {
     id 'org.springframework.boot' version '2.4.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "com.ewerk.gradle.plugins.querydsl" version '1.0.10'
 }
 
 group = 'com.nexters'
@@ -29,6 +26,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-aws-autoconfigure:2.2.1.RELEASE'
 
+    compile group: 'com.querydsl', name: 'querydsl-apt', version: '4.3.1'
+    compile group: 'com.querydsl', name: 'querydsl-mongodb', version: '4.3.1'
+    compile group: 'com.querydsl', name: 'querydsl-core', version: '4.3.1'
+    compile group: 'com.querydsl', name: 'querydsl-jpa', version: '4.3.1'
+    compile group: 'com.mysema.maven', name: 'apt-maven-plugin', version: '1.1.3'
+
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.4'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.4'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.4'
@@ -39,4 +42,36 @@ dependencies {
     implementation 'io.springfox:springfox-swagger-ui:2.6.1'
     implementation 'io.springfox:springfox-swagger2:2.6.1'
 }
+
+def querydslSrcDir = 'src/main/generated'
+
+querydsl {
+    springDataMongo = true
+    library = "com.querydsl:querydsl-apt"
+//    jpa = true
+    querydslSourcesDir = querydslSrcDir
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', querydslSrcDir]
+        }
+    }
+}
+
+
+task deleteGeneratedSources(type: Delete) {
+    delete file(querydslSrcDir)
+}
+
+tasks.withType(JavaCompile) { it.dependsOn('deleteGeneratedSources') }
 

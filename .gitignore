@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 /src/main/resources/aws.properties
 /src/main/resources/application-prod.properties
+/src/main/generated/
 
 ### STS ###
 .apt_generated
