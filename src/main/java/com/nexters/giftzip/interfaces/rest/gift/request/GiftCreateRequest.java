@@ -2,7 +2,7 @@ package com.nexters.giftzip.interfaces.rest.gift.request;
 
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
+import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,16 +24,12 @@ public class GiftCreateRequest {
     private String name;
     @ApiModelProperty("receiveDate")
     private LocalDateTime receiveDate;
-    @ApiModelProperty("bgColor")
-    private String bgColor;
-    @ApiModelProperty("transparencyBgColor")
-    private String transparencyBgColor;
-    @ApiModelProperty("frameType")
-    private FrameType frameType;
     @ApiModelProperty("createdBy")
     private String createdBy;
     @ApiModelProperty("category")
     private Category category;
     @ApiModelProperty("emotion")
     private Emotion emotion;
+    @ApiModelProperty("reason")
+    private Reason reason;
 }

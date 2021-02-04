@@ -3,6 +3,7 @@ package com.nexters.giftzip.interfaces.rest.gift.dto;
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
+import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
 import com.nexters.giftzip.interfaces.rest.gift.entity.Sticker;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,14 +19,15 @@ public class GiftCreateDto {
     private String name;
     private LocalDateTime receiveDate;
     private String bgColor;
-    private FrameType frameType;
-    private List<Sticker> sticker;
     private String createdBy;
     private Category category;
     private Emotion emotion;
-    private String imgUrl;
+    private Reason reason;
+    private String noBgimgUrl;
+    private String bgImgUrl;
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImgUrl(String noBgImgUrl, String bgImgUrl) {
+        this.bgImgUrl = bgImgUrl;
+        this.noBgimgUrl = noBgImgUrl;
     }
 }

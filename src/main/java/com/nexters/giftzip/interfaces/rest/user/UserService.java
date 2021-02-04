@@ -18,6 +18,7 @@ public class UserService {
         userDocument.setAppleToken(request.getAppleToken());
         userDocument.setKakaoToken(request.getKakaoToken());
         userDocument.setName(request.getKakaoToken());
+        userDocument.setLoginType(request.getLoginType());
         userRepository.save(userDocument);
     }
 }

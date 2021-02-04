@@ -8,21 +8,29 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class GiftGetByCreationRequest {
+public class GiftGetByCreationRequest implements SpecificationRequest{
     private String createdBy;
-    private Pageable pageable;
+    private Boolean isReceivedGift;
+    private int page;
+    private int size;
 
-    public static GiftGetByCreationRequest of(String createdBy, Integer page, Integer size) {
-        return new GiftGetByCreationRequest(createdBy, PageRequest.of(page, size));
+    public static GiftGetByCreationRequest of(String createdBy, Integer page, Integer size, Boolean isReceivedGift) {
+        return new GiftGetByCreationRequest(createdBy, isReceivedGift, page, size);
     }
 
     public Predicate getPredicate() {
         QGiftInfoDocument gift = QGiftInfoDocument.giftInfoDocument;
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(gift.createdBy.eq(this.createdBy));
+        builder.and(gift.isReceiveGift.eq(isReceivedGift));
         return builder;
+    }
+
+    public Pageable getPageable() {
+        return PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
     }
 }

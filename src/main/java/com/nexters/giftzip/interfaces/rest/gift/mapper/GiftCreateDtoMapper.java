@@ -14,13 +14,12 @@ public class GiftCreateDtoMapper implements EntityMapper<GiftCreateRequest, Gift
     public GiftCreateDto entityToResult(GiftCreateRequest giftCreateRequest) {
         return GiftCreateDto.builder()
                 .content(giftCreateRequest.getContent())
-                .bgColor(giftCreateRequest.getBgColor())
                 .createdBy(giftCreateRequest.getCreatedBy())
                 .isReceiveGift(giftCreateRequest.getIsReceiveGift())
                 .receiveDate(giftCreateRequest.getReceiveDate())
                 .category(giftCreateRequest.getCategory())
                 .emotion(giftCreateRequest.getEmotion())
-                .frameType(giftCreateRequest.getFrameType())
+                .reason(giftCreateRequest.getReason())
                 .name(giftCreateRequest.getName())
                 .build();
     }

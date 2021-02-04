@@ -2,14 +2,30 @@ package com.nexters.giftzip.interfaces.rest.gift.request;
 
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
-import com.nexters.giftzip.interfaces.rest.common.tag.StickerSort;
+import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Data
+@Getter
+@NoArgsConstructor
+@ApiModel
 public class GiftTagSearchRequest {
+    @ApiModelProperty("category")
     private Category category;
+    @ApiModelProperty("emotion")
     private Emotion emotion;
-    private StickerSort stickerSort;
+    @ApiModelProperty("reason")
+    private Reason reason;
+    @ApiModelProperty("name")
+    private String name;
+    @ApiModelProperty("content")
+    private String content;
+    @ApiModelProperty("page")
     private int page;
+    @ApiModelProperty("size")
     private int size;
-
 }

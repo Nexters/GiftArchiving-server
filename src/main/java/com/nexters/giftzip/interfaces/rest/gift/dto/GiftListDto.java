@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public class GiftListDto {
+    private String id;
     private String imgUrl;
     private String name;
     private String content;
@@ -12,7 +13,8 @@ public class GiftListDto {
     public GiftListDto() { }
 
     @Builder
-    public GiftListDto(String imgUrl, String name, String content) {
+    public GiftListDto(String id, String imgUrl, String name, String content) {
+        this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
         this.content = content;

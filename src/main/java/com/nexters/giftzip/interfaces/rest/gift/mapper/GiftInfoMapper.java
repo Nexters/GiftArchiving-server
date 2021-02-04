@@ -10,9 +10,10 @@ public class GiftInfoMapper implements EntityMapper<GiftInfoDocument, GiftListDt
     @Override
     public GiftListDto entityToResult(GiftInfoDocument giftInfoDocument) {
         return GiftListDto.builder()
+                .id(giftInfoDocument.getId())
                 .name(giftInfoDocument.getName())
                 .content(giftInfoDocument.getContent())
-                .imgUrl(giftInfoDocument.getImgUrl())
+                .imgUrl(giftInfoDocument.getBgImgUrl())
                 .build();
     }
 }
