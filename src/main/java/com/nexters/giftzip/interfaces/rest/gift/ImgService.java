@@ -11,16 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
-public class ImgRegisterService {
+public class ImgService {
     private final AwsS3Service awsS3Supporter;
 
     @Value("${aws.s3.url}")
     private String s3Url;
 
-    public ImgRegisterService(AwsS3Service awsS3Supporter) {
+    public ImgService(AwsS3Service awsS3Supporter) {
         this.awsS3Supporter = awsS3Supporter;
     }
 
@@ -33,5 +34,12 @@ public class ImgRegisterService {
             log.error(e.getMessage());
             throw new AwsS3Exception(CommonErrorType.AWS_S3_ERROR);
         }
+    }
+
+    public void removeImgFromS3(List<String> fileName) {
+        fileName.stream().forEach(f -> {
+            String replace = f.replace(s3Url, "");
+            awsS3Supporter.deleteObject(replace);
+        });
     }
 }

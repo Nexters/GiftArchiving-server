@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift;
 
+import com.google.common.collect.Lists;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftListDto;
 import com.nexters.giftzip.interfaces.rest.gift.entity.GiftInfoDocument;
@@ -12,12 +13,10 @@ import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
 import com.nexters.giftzip.support.exception.CommonErrorType;
 import com.nexters.giftzip.support.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +25,8 @@ public class GiftInfoService {
     private final GiftInfoRepository giftInfoRepository;
     private final GiftInfoMapper giftInfoMapper;
     private final GiftDetailResponseMapper giftDetailResponseMapper;
+    private final ImgService imgService;
+
 
     public String createGiftInfo(GiftCreateDto giftCreateRequest) {
         GiftInfoDocument giftInfoDocument = new GiftInfoDocument();
@@ -33,6 +34,7 @@ public class GiftInfoService {
         giftInfoDocument.setContent(giftCreateRequest.getContent());
         giftInfoDocument.setEmotion(giftCreateRequest.getEmotion());
         giftInfoDocument.setIsReceiveGift(giftCreateRequest.getIsReceiveGift());
+        giftInfoDocument.setBgColor(giftCreateRequest.getBgColor());
         giftInfoDocument.setBgImgUrl(giftCreateRequest.getBgImgUrl());
         giftInfoDocument.setNoBgImgUrl(giftCreateRequest.getNoBgimgUrl());
         giftInfoDocument.setName(giftCreateRequest.getName());
@@ -48,7 +50,13 @@ public class GiftInfoService {
     }
 
     public GiftDetailResponse getGiftDetail(String giftId) {
-        GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(new ObjectId(giftId)).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
+        GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(giftId).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
         return giftDetailResponseMapper.entityToResult(giftInfoDocument);
+    }
+
+    public void removeGiftInfo(String giftId) {
+        GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(giftId).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
+        imgService.removeImgFromS3(Lists.newArrayList(giftInfoDocument.getBgImgUrl(), giftInfoDocument.getNoBgImgUrl()));
+        giftInfoRepository.deleteById(giftId);
     }
 }

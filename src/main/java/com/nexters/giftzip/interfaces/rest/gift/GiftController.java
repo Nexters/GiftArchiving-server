@@ -1,6 +1,5 @@
 package com.nexters.giftzip.interfaces.rest.gift;
 
-import com.fasterxml.jackson.databind.introspect.ObjectIdInfo;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftCreateDtoMapper;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
@@ -13,7 +12,6 @@ import com.nexters.giftzip.interfaces.rest.gift.validator.GiftCreateRequestValid
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.types.ObjectId;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class GiftController {
     private final GiftInfoService giftService;
     private final GiftCreateDtoMapper giftCreateDtoMapper;
-    private final ImgRegisterService imgRegisterService;
+    private final ImgService imgService;
     private final GiftCreateRequestValidator validator;
 
 
@@ -44,6 +42,12 @@ public class GiftController {
     @RequestMapping(path = "/{giftId}", method = RequestMethod.GET)
     public GiftDetailResponse getGiftInfo(@PathVariable String giftId) {
         return giftService.getGiftDetail(giftId);
+    }
+
+    @ApiOperation(value = "선물 기록 삭제", notes = "특정 선물 기록을 제거합니다.")
+    @RequestMapping(path = "/{giftId}", method = RequestMethod.DELETE)
+    public void removeGiftInfo(@PathVariable String giftId) {
+        giftService.removeGiftInfo(giftId);
     }
 
     @ApiOperation(value = "기록 목록 불러오기", notes = "선물 기록 목록을 불러온다.")
@@ -77,6 +81,6 @@ public class GiftController {
     }
 
     private String getFileUrl(MultipartFile file, String userToken) {
-        return imgRegisterService.uploadImgToS3(file, userToken);
+        return imgService.uploadImgToS3(file, userToken);
     }
 }

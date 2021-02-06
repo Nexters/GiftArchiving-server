@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 @QueryEntity
 @Document(collection = "gift_info")
 public class GiftInfoDocument extends BaseEntity {
-    @MongoId
+    @MongoId(targetType = FieldType.OBJECT_ID)
     private String id;
     private String createdBy;
     private String content;
@@ -28,6 +29,7 @@ public class GiftInfoDocument extends BaseEntity {
     private LocalDateTime receiveDate;
     private String bgImgUrl;
     private String noBgImgUrl;
+    private String bgColor;
     private Category category;
     private Emotion emotion;
     private Reason reason;

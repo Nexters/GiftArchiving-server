@@ -32,4 +32,6 @@ public class GiftCreateRequest {
     private Emotion emotion;
     @ApiModelProperty("reason")
     private Reason reason;
+    @ApiModelProperty("bgColor")
+    private String bgColor;
 }

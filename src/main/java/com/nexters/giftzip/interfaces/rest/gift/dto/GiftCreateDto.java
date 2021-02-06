@@ -2,14 +2,11 @@ package com.nexters.giftzip.interfaces.rest.gift.dto;
 
 import com.nexters.giftzip.interfaces.rest.common.tag.Category;
 import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
-import com.nexters.giftzip.interfaces.rest.gift.entity.Sticker;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Builder
 @Getter

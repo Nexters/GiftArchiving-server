@@ -9,12 +9,14 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class AwsS3Service {
     private AmazonS3 s3Client;
@@ -42,8 +44,11 @@ public class AwsS3Service {
         s3Client.putObject(putObjectRequest);
     }
 
-    public void deleteObject(String userToken, String storedFileName) throws AmazonServiceException {
-        s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/"+userToken, storedFileName));
+    public void deleteObject(String storedFileName) throws AmazonServiceException {
+        DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(bucketName + "/", storedFileName);
+
+        log.info("AWS S3 DELETE ::  bucket :{}, fileName : {}", deleteObjectRequest.getBucketName(), storedFileName);
+        s3Client.deleteObject(deleteObjectRequest);
     }
 
 }
