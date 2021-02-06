@@ -18,7 +18,5 @@ public class UserDocument extends BaseEntity {
     @MongoId(targetType = FieldType.OBJECT_ID)
     private String id;
     private String name;
-    private String kakaoToken;
-    private String appleToken;
-    private LoginType loginType;
+    private String token;
 }

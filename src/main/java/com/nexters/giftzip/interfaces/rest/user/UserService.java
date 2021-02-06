@@ -15,10 +15,7 @@ public class UserService {
     @Transactional
     public void signInUser(UserSignInRequest request){
         UserDocument userDocument = new UserDocument();
-        userDocument.setAppleToken(request.getAppleToken());
-        userDocument.setKakaoToken(request.getKakaoToken());
-        userDocument.setName(request.getKakaoToken());
-        userDocument.setLoginType(request.getLoginType());
+        userDocument.setToken(request.getAppleToken());
         userRepository.save(userDocument);
     }
 }
