@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -23,6 +24,7 @@ public class GiftCreateRequest {
     @ApiModelProperty("name")
     private String name;
     @ApiModelProperty("receiveDate")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime receiveDate;
     @ApiModelProperty("createdBy")
     private String createdBy;
