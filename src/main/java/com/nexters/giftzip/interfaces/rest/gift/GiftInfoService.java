@@ -8,6 +8,7 @@ import com.nexters.giftzip.interfaces.rest.gift.entity.GiftInfoRepository;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftDetailResponseMapper;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftInfoMapper;
 import com.nexters.giftzip.interfaces.rest.gift.request.SpecificationRequest;
+import com.nexters.giftzip.interfaces.rest.gift.response.GiftCreateResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftDetailResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
 import com.nexters.giftzip.support.exception.CommonErrorType;
@@ -28,7 +29,7 @@ public class GiftInfoService {
     private final ImgService imgService;
 
 
-    public String createGiftInfo(GiftCreateDto giftCreateRequest) {
+    public GiftCreateResponse createGiftInfo(GiftCreateDto giftCreateRequest) {
         GiftInfoDocument giftInfoDocument = new GiftInfoDocument();
         giftInfoDocument.setCategory(giftCreateRequest.getCategory());
         giftInfoDocument.setContent(giftCreateRequest.getContent());
@@ -40,7 +41,9 @@ public class GiftInfoService {
         giftInfoDocument.setName(giftCreateRequest.getName());
         giftInfoDocument.setCreatedBy(giftCreateRequest.getCreatedBy());
         giftInfoDocument.setReceiveDate(giftCreateRequest.getReceiveDate());
-        return giftInfoRepository.save(giftInfoDocument).getId();
+        String id = giftInfoRepository.save(giftInfoDocument).getId();
+
+        return GiftCreateResponse.of(giftCreateRequest.getNoBgimgUrl(), giftCreateRequest.getBgImgUrl(), id);
     }
 
     public GiftListResponse getGiftListResponse(SpecificationRequest request) {

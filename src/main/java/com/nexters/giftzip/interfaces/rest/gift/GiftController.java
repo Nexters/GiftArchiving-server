@@ -1,11 +1,13 @@
 package com.nexters.giftzip.interfaces.rest.gift;
 
+import com.amazonaws.util.json.Jackson;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftCreateDtoMapper;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftGetByCreationRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchSpecification;
+import com.nexters.giftzip.interfaces.rest.gift.response.GiftCreateResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftDetailResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
 import com.nexters.giftzip.interfaces.rest.gift.validator.GiftCreateRequestValidator;
@@ -31,11 +33,11 @@ public class GiftController {
     @RequestMapping(path = "/create", method = RequestMethod.POST, produces = {MediaType.MULTIPART_FORM_DATA_VALUE},
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String save(@ModelAttribute("request") GiftCreateRequest giftCreateRequest, @RequestPart MultipartFile bgImg,
-                       @RequestPart MultipartFile noBgImg) {
+                                   @RequestPart MultipartFile noBgImg) {
         validator.validate(giftCreateRequest);
         GiftCreateDto giftCreateDto = giftCreateDtoMapper.entityToResult(giftCreateRequest);
         giftCreateDto.setImgUrl(getFileUrl(bgImg, giftCreateDto.getCreatedBy()), getFileUrl(noBgImg, giftCreateDto.getCreatedBy()));
-        return giftService.createGiftInfo(giftCreateDto);
+        return Jackson.toJsonPrettyString(giftService.createGiftInfo(giftCreateDto));
     }
 
     @ApiOperation(value = "선물 기록 불러오기", notes = "특정 선물 기록을 불러옵니다.")
