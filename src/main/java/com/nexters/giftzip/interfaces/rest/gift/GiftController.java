@@ -7,7 +7,6 @@ import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftGetByCreationRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchSpecification;
-import com.nexters.giftzip.interfaces.rest.gift.response.GiftCreateResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftDetailResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
 import com.nexters.giftzip.interfaces.rest.gift.validator.GiftCreateRequestValidator;
@@ -36,7 +35,7 @@ public class GiftController {
                                    @RequestPart MultipartFile noBgImg) {
         validator.validate(giftCreateRequest);
         GiftCreateDto giftCreateDto = giftCreateDtoMapper.entityToResult(giftCreateRequest);
-        giftCreateDto.setImgUrl(getFileUrl(bgImg, giftCreateDto.getCreatedBy()), getFileUrl(noBgImg, giftCreateDto.getCreatedBy()));
+        giftCreateDto.setImgUrl(getFileUrl(noBgImg, giftCreateDto.getCreatedBy()), getFileUrl(bgImg, giftCreateDto.getCreatedBy()));
         return Jackson.toJsonPrettyString(giftService.createGiftInfo(giftCreateDto));
     }
 
