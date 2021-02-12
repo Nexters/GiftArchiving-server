@@ -15,6 +15,8 @@ public class GiftListDto {
     private String name;
     private String content;
     private LocalDateTime receiveDate;
+    private String bgColor;
+    private Boolean isReceiveGift;
     private Category category;
     private Emotion emotion;
     private Reason reason;
@@ -23,7 +25,7 @@ public class GiftListDto {
 
     @Builder
     public GiftListDto(String id, String imgUrl, String name, String content, LocalDateTime receiveDate, Category category,
-                       Emotion emotion, Reason reason) {
+                       Emotion emotion, Reason reason, String bgColor, Boolean isReceiveGift) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
@@ -32,5 +34,7 @@ public class GiftListDto {
         this.category = category;
         this.emotion = emotion;
         this.reason = reason;
+        this.bgColor = bgColor;
+        this.isReceiveGift = isReceiveGift;
     }
 }
