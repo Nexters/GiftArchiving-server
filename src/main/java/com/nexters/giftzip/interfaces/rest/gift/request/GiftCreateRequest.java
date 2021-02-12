@@ -1,8 +1,8 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
-import com.nexters.giftzip.interfaces.rest.common.tag.Category;
-import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
+import com.nexters.giftzip.interfaces.common.tag.Category;
+import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.Reason;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

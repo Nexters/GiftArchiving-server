@@ -1,8 +1,8 @@
 package com.nexters.giftzip.interfaces.rest.gift.mapper;
 
-import com.nexters.giftzip.interfaces.rest.common.EntityMapper;
+import com.nexters.giftzip.interfaces.common.EntityMapper;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftListDto;
-import com.nexters.giftzip.interfaces.rest.gift.entity.GiftInfoDocument;
+import com.nexters.giftzip.interfaces.common.entity.gift.GiftInfoDocument;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,6 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
-import com.nexters.giftzip.interfaces.rest.gift.entity.QGiftInfoDocument;
+import com.nexters.giftzip.interfaces.common.entity.gift.QGiftInfoDocument;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import lombok.AccessLevel;

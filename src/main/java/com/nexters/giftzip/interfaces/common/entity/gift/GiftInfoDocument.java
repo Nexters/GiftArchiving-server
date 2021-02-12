@@ -1,9 +1,9 @@
-package com.nexters.giftzip.interfaces.rest.gift.entity;
+package com.nexters.giftzip.interfaces.common.entity.gift;
 
-import com.nexters.giftzip.interfaces.rest.common.BaseEntity;
-import com.nexters.giftzip.interfaces.rest.common.tag.Category;
-import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
+import com.nexters.giftzip.interfaces.common.BaseEntity;
+import com.nexters.giftzip.interfaces.common.tag.Category;
+import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.Reason;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

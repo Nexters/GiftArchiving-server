@@ -1,4 +1,4 @@
-package com.nexters.giftzip.interfaces.rest.user.entity;
+package com.nexters.giftzip.interfaces.common.entity.user;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
