@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.user;
 
+import com.nexters.giftzip.interfaces.common.entity.user.UserService;
 import com.nexters.giftzip.interfaces.rest.user.request.UserSignInRequest;
 import com.nexters.giftzip.interfaces.rest.user.response.UserSignInResponse;
 import io.swagger.annotations.ApiOperation;

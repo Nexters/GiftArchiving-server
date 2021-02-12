@@ -41,6 +41,7 @@ public class GiftInfoService {
         giftInfoDocument.setName(giftCreateRequest.getName());
         giftInfoDocument.setCreatedBy(giftCreateRequest.getCreatedBy());
         giftInfoDocument.setReceiveDate(giftCreateRequest.getReceiveDate());
+        giftInfoDocument.setReason(giftCreateRequest.getReason());
         String id = giftInfoRepository.save(giftInfoDocument).getId();
 
         return GiftCreateResponse.of(giftCreateRequest.getNoBgimgUrl(), giftCreateRequest.getBgImgUrl(), id);

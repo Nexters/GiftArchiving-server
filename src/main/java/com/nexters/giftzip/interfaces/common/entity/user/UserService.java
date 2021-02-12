@@ -1,11 +1,14 @@
-package com.nexters.giftzip.interfaces.rest.user;
+package com.nexters.giftzip.interfaces.common.entity.user;
 
-import com.nexters.giftzip.interfaces.common.entity.user.UserDocument;
-import com.nexters.giftzip.interfaces.common.entity.user.UserRepository;
 import com.nexters.giftzip.interfaces.rest.user.request.UserSignInRequest;
+import com.nexters.giftzip.support.exception.CommonErrorType;
+import com.nexters.giftzip.support.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,5 +21,9 @@ public class UserService {
         userDocument.setToken(request.getToken());
         userDocument.setLoginType(request.getLoginType());
         userRepository.save(userDocument);
+    }
+
+    public Optional<UserDocument> findByToken(String token) {
+        return userRepository.findByToken(token);
     }
 }
