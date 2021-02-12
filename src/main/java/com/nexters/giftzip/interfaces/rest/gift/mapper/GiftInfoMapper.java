@@ -14,6 +14,12 @@ public class GiftInfoMapper implements EntityMapper<GiftInfoDocument, GiftListDt
                 .name(giftInfoDocument.getName())
                 .content(giftInfoDocument.getContent())
                 .imgUrl(giftInfoDocument.getBgImgUrl())
+                .isReceiveGift(giftInfoDocument.getIsReceiveGift())
+                .receiveDate(giftInfoDocument.getReceiveDate())
+                .category(giftInfoDocument.getCategory())
+                .emotion(giftInfoDocument.getEmotion())
+                .reason(giftInfoDocument.getReason())
+                .bgColor(giftInfoDocument.getBgColor())
                 .build();
     }
 }
