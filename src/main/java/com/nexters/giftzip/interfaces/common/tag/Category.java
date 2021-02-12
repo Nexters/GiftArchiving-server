@@ -1,4 +1,4 @@
-package com.nexters.giftzip.interfaces.rest.common.tag;
+package com.nexters.giftzip.interfaces.common.tag;
 
 public enum Category {
     LIVING("리빙"),

@@ -1,4 +1,4 @@
-package com.nexters.giftzip.interfaces.rest.gift.entity;
+package com.nexters.giftzip.interfaces.common.entity.gift;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;

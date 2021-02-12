@@ -1,6 +1,6 @@
-package com.nexters.giftzip.interfaces.rest.user.entity;
+package com.nexters.giftzip.interfaces.common.entity.user;
 
-import com.nexters.giftzip.interfaces.rest.common.BaseEntity;
+import com.nexters.giftzip.interfaces.common.BaseEntity;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +19,5 @@ public class UserDocument extends BaseEntity {
     private String id;
     private String name;
     private String token;
+    private LoginType loginType;
 }

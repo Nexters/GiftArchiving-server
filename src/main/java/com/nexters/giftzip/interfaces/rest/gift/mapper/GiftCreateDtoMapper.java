@@ -1,6 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.mapper;
 
-import com.nexters.giftzip.interfaces.rest.common.EntityMapper;
+import com.nexters.giftzip.interfaces.common.EntityMapper;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
 import lombok.RequiredArgsConstructor;

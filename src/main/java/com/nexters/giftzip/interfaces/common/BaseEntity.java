@@ -1,4 +1,4 @@
-package com.nexters.giftzip.interfaces.rest.common;
+package com.nexters.giftzip.interfaces.common;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

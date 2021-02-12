@@ -1,9 +1,9 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
-import com.nexters.giftzip.interfaces.rest.common.tag.Category;
-import com.nexters.giftzip.interfaces.rest.common.tag.Emotion;
-import com.nexters.giftzip.interfaces.rest.common.tag.Reason;
-import com.nexters.giftzip.interfaces.rest.gift.entity.QGiftInfoDocument;
+import com.nexters.giftzip.interfaces.common.tag.Category;
+import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.Reason;
+import com.nexters.giftzip.interfaces.common.entity.gift.QGiftInfoDocument;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import lombok.Builder;
