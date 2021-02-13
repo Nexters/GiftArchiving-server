@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>공지글 작성</h1>
+    </div>
+    <form action="/admin" method="post">
+        <div id="inputTitle">
+            <input type="text" name="title" class="form-control" placeholder="공지 제목">
+        </div>
+        <div id="inputContent">
+            <textarea class="form-control" name="content" rows="20" placeholder="내용"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">작성하기</button>
+        <sec:csrfInput/>
+    </form>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

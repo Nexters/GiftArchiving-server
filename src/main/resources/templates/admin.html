@@ -3,25 +3,56 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<table class="table table-striped">
-    <caption>공지사항 목록</caption>
-    <thead>
-    <tr>
-        <th>제목</th>
-        <th>내용</th>
-        <th>등록일자</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>test</td>
-        <td>test</td>
-    </tr>
-    </tbody>
+<div class="container">
+    <div>
+        <button type="button" id="writeBtn" class="btn btn-primary btn-lg btn-block"> 공지사항 작성</button>
+    </div>
+    <table class="table table-striped">
+        <caption>공지사항 목록</caption>
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>등록일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="admin : ${adminList}">
+            <td th:text="${admin.title}"></td>
+            <td th:text="${admin.content}"></td>
+            <td th:text="${admin.createdAt}"></td>
+        </tr>
+        </tbody>
 
-</table>
+    </table>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
+<script>
+    $(document).ready(function () {
+        $('#writeBtn').click(function (){
+            window.open("/admin");
+        });
+    });
+
+</script>
 </body>
 </html>

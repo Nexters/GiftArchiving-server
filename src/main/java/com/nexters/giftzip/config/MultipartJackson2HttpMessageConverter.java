@@ -14,7 +14,7 @@ public class MultipartJackson2HttpMessageConverter extends AbstractJackson2HttpM
      * Converter for support http request with header Content-Type: multipart/form-data
      */
     public MultipartJackson2HttpMessageConverter(ObjectMapper objectMapper) {
-        super(objectMapper, MediaType.MULTIPART_FORM_DATA);
+        super(objectMapper, MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_FORM_URLENCODED);
     }
 
     @Override
