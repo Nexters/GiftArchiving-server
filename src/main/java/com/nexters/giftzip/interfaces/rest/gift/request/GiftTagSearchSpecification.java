@@ -28,7 +28,7 @@ public class GiftTagSearchSpecification implements SpecificationRequest{
         QGiftInfoDocument gift = QGiftInfoDocument.giftInfoDocument;
         BooleanBuilder builder = new BooleanBuilder();
 
-        gift.createdBy.eq(createdBy);
+        builder.and(gift.createdBy.eq(createdBy));
 
         if(!Objects.isNull(category)) {
             builder.and(gift.category.eq(category));

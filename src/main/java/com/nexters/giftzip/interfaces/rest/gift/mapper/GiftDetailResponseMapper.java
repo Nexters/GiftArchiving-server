@@ -21,6 +21,7 @@ public class GiftDetailResponseMapper implements EntityMapper<GiftInfoDocument, 
                 .createdBy(giftInfoDocument.getCreatedBy())
                 .id(giftInfoDocument.getId())
                 .reason(giftInfoDocument.getReason())
+                .createdAt(giftInfoDocument.getCreatedAt())
                 .build();
     }
 }
