@@ -21,10 +21,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       http.authorizeRequests()
-                .mvcMatchers("/admin/**").authenticated()
-       .mvcMatchers("/**").permitAll()
-       .and()
-       .formLogin();
+        http.authorizeRequests()
+                .antMatchers("/admin/**").authenticated()
+                .mvcMatchers("/**").permitAll()
+                .and()
+                .formLogin();
+        http.csrf().disable();
     }
 }

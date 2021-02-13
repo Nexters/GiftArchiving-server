@@ -1,8 +1,6 @@
-package com.nexters.giftzip.interfaces.admin;
+package com.nexters.giftzip.interfaces.common.entity.admin;
 
 import com.nexters.giftzip.interfaces.admin.request.NoticeRequest;
-import com.nexters.giftzip.interfaces.common.entity.admin.AdminDocument;
-import com.nexters.giftzip.interfaces.common.entity.admin.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

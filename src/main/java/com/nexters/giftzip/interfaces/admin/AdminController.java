@@ -2,7 +2,7 @@ package com.nexters.giftzip.interfaces.admin;
 
 import com.nexters.giftzip.interfaces.admin.request.NoticeRequest;
 import com.nexters.giftzip.interfaces.common.entity.admin.AdminDocument;
-import io.swagger.models.Model;
+import com.nexters.giftzip.interfaces.common.entity.admin.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
