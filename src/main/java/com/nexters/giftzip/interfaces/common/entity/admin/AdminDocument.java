@@ -10,12 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-@NoArgsConstructor
+ @NoArgsConstructor
 @QueryEntity
-@Document(collection = "user")
-public class AdminDocument extends BaseEntity {
+@Document(collection = "admin")
+public class AdminDocument extends BaseEntity implements Serializable {
+    private static final long serialVersionUID = -7024372273203716380L;
+
     @MongoId(targetType = FieldType.OBJECT_ID)
     private String id;
     private String title;
