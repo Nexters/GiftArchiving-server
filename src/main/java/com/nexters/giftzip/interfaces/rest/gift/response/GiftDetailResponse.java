@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
@@ -16,7 +17,9 @@ public class GiftDetailResponse {
     private String content;
     private Boolean isReceiveGift;
     private String name;
+    @JsonFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss")
     private LocalDateTime receiveDate;
+    @JsonFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss")
     private LocalDateTime createdAt;
     private String bgImgUrl;
     private String noBgImgUrl;

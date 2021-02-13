@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
@@ -14,6 +15,7 @@ public class GiftListDto {
     private String imgUrl;
     private String name;
     private String content;
+    @JsonFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss")
     private LocalDateTime receiveDate;
     private String bgColor;
     private Boolean isReceiveGift;
