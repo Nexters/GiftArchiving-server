@@ -21,13 +21,13 @@ public class AdminController {
     public ModelAndView findAll(ModelAndView model) {
         List<AdminDocument> adminList = adminService.getAdminList();
         model.addObject("adminList", adminList);
-        model.setViewName("/admin");
+        model.setViewName("admin");
         return model;
     }
 
     @GetMapping
     public String createNotice() {
-        return "/admin_write";
+        return "admin_write";
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = {MediaType.APPLICATION_FORM_URLENCODED_VALUE},
