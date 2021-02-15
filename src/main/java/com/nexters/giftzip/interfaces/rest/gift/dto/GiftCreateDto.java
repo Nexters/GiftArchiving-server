@@ -2,6 +2,7 @@ package com.nexters.giftzip.interfaces.rest.gift.dto;
 
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class GiftCreateDto {
     private Reason reason;
     private String noBgimgUrl;
     private String bgImgUrl;
+    private FrameType frameType;
 
     public void setImgUrl(String noBgImgUrl, String bgImgUrl) {
         this.bgImgUrl = bgImgUrl;

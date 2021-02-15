@@ -3,6 +3,7 @@ package com.nexters.giftzip.interfaces.common.entity.gift;
 import com.nexters.giftzip.interfaces.common.BaseEntity;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.Getter;
@@ -32,5 +33,6 @@ public class GiftInfoDocument extends BaseEntity {
     private String bgColor;
     private Category category;
     private Emotion emotion;
+    private FrameType frameType;
     private Reason reason;
 }

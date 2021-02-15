@@ -3,6 +3,7 @@ package com.nexters.giftzip.interfaces.rest.gift.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,12 +23,13 @@ public class GiftListDto {
     private Category category;
     private Emotion emotion;
     private Reason reason;
+    private FrameType frameType;
 
     public GiftListDto() { }
 
     @Builder
     public GiftListDto(String id, String imgUrl, String name, String content, LocalDateTime receiveDate, Category category,
-                       Emotion emotion, Reason reason, String bgColor, Boolean isReceiveGift) {
+                       Emotion emotion, Reason reason, String bgColor, Boolean isReceiveGift, FrameType frameType) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
@@ -38,5 +40,6 @@ public class GiftListDto {
         this.reason = reason;
         this.bgColor = bgColor;
         this.isReceiveGift = isReceiveGift;
+        this.frameType = frameType;
     }
 }
