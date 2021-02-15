@@ -7,6 +7,7 @@ import com.nexters.giftzip.interfaces.common.entity.gift.GiftInfoDocument;
 import com.nexters.giftzip.interfaces.common.entity.gift.GiftInfoRepository;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftDetailResponseMapper;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftInfoMapper;
+import com.nexters.giftzip.interfaces.rest.gift.request.GiftEditRequest;
 import com.nexters.giftzip.interfaces.rest.gift.request.SpecificationRequest;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftCreateResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftDetailResponse;
@@ -42,6 +43,7 @@ public class GiftInfoService {
         giftInfoDocument.setCreatedBy(giftCreateRequest.getCreatedBy());
         giftInfoDocument.setReceiveDate(giftCreateRequest.getReceiveDate());
         giftInfoDocument.setReason(giftCreateRequest.getReason());
+        giftInfoDocument.setFrameType(giftCreateRequest.getFrameType());
         String id = giftInfoRepository.save(giftInfoDocument).getId();
 
         return GiftCreateResponse.of(giftCreateRequest.getNoBgimgUrl(), giftCreateRequest.getBgImgUrl(), id);
@@ -62,5 +64,17 @@ public class GiftInfoService {
         GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(giftId).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
         imgService.removeImgFromS3(Lists.newArrayList(giftInfoDocument.getBgImgUrl(), giftInfoDocument.getNoBgImgUrl()));
         giftInfoRepository.deleteById(giftId);
+    }
+
+    public void updateGiftInfo(String giftId, GiftEditRequest request) {
+        GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(giftId).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
+        giftInfoDocument.setCategory(request.getCategory());
+        giftInfoDocument.setContent(request.getContent());
+        giftInfoDocument.setBgColor(request.getBgColor());
+        giftInfoDocument.setEmotion(request.getEmotion());
+        giftInfoDocument.setReason(request.getReason());
+        giftInfoDocument.setName(request.getName());
+        giftInfoDocument.setReceiveDate(request.getReceiveDate());
+        giftInfoRepository.save(giftInfoDocument);
     }
 }

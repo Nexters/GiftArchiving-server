@@ -3,6 +3,7 @@ package com.nexters.giftzip.interfaces.rest.gift.response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
+import com.nexters.giftzip.interfaces.common.tag.FrameType;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +24,8 @@ public class GiftDetailResponse {
     private LocalDateTime createdAt;
     private String bgImgUrl;
     private String noBgImgUrl;
+    private String bgColor;
+    private FrameType frameType;
     private Category category;
     private Emotion emotion;
     private Reason reason;

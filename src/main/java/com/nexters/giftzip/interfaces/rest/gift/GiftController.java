@@ -3,10 +3,7 @@ package com.nexters.giftzip.interfaces.rest.gift;
 import com.amazonaws.util.json.Jackson;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftCreateDtoMapper;
-import com.nexters.giftzip.interfaces.rest.gift.request.GiftCreateRequest;
-import com.nexters.giftzip.interfaces.rest.gift.request.GiftGetByCreationRequest;
-import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchRequest;
-import com.nexters.giftzip.interfaces.rest.gift.request.GiftTagSearchSpecification;
+import com.nexters.giftzip.interfaces.rest.gift.request.*;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftDetailResponse;
 import com.nexters.giftzip.interfaces.rest.gift.response.GiftListResponse;
 import com.nexters.giftzip.interfaces.rest.gift.validator.GiftCreateRequestValidator;
@@ -43,6 +40,12 @@ public class GiftController {
     @RequestMapping(path = "/{giftId}", method = RequestMethod.GET)
     public GiftDetailResponse getGiftInfo(@PathVariable String giftId) {
         return giftService.getGiftDetail(giftId);
+    }
+
+    @ApiOperation(value = "선물 기록 수정하기")
+    @RequestMapping(value = "/{giftId}", method = RequestMethod.PUT)
+    public void editGiftInfo(@PathVariable String giftId, @RequestBody GiftEditRequest request) {
+        giftService.updateGiftInfo(giftId, request);
     }
 
     @ApiOperation(value = "선물 기록 삭제", notes = "특정 선물 기록을 제거합니다.")

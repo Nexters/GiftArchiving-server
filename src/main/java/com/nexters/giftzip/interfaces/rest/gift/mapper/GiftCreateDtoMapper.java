@@ -22,6 +22,7 @@ public class GiftCreateDtoMapper implements EntityMapper<GiftCreateRequest, Gift
                 .reason(giftCreateRequest.getReason())
                 .name(giftCreateRequest.getName())
                 .bgColor(giftCreateRequest.getBgColor())
+                .frameType(giftCreateRequest.getFrameType())
                 .build();
     }
 }
