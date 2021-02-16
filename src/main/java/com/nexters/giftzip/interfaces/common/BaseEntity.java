@@ -13,4 +13,8 @@ public abstract class BaseEntity {
 
     @LastModifiedDate
     protected LocalDateTime modifiedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt.minusHours(9);
+    }
 }

@@ -21,6 +21,7 @@ public class GiftInfoMapper implements EntityMapper<GiftInfoDocument, GiftListDt
                 .reason(giftInfoDocument.getReason())
                 .frameType(giftInfoDocument.getFrameType())
                 .bgColor(giftInfoDocument.getBgColor())
+                .createdAt(giftInfoDocument.getCreatedAt())
                 .build();
     }
 }
