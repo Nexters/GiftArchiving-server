@@ -18,6 +18,8 @@ public class GiftListDto {
     private String content;
     @JsonFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss")
     private LocalDateTime receiveDate;
+    @JsonFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss")
+    private LocalDateTime createdAt;
     private String bgColor;
     private Boolean isReceiveGift;
     private Category category;
@@ -29,7 +31,7 @@ public class GiftListDto {
 
     @Builder
     public GiftListDto(String id, String imgUrl, String name, String content, LocalDateTime receiveDate, Category category,
-                       Emotion emotion, Reason reason, String bgColor, Boolean isReceiveGift, FrameType frameType) {
+                       Emotion emotion, Reason reason, String bgColor, Boolean isReceiveGift, FrameType frameType, LocalDateTime createdAt) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.name = name;
@@ -41,5 +43,6 @@ public class GiftListDto {
         this.bgColor = bgColor;
         this.isReceiveGift = isReceiveGift;
         this.frameType = frameType;
+        this.createdAt = createdAt;
     }
 }

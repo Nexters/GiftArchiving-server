@@ -10,6 +10,7 @@ import lombok.Builder;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.Objects;
 
@@ -50,6 +51,6 @@ public class GiftTagSearchSpecification implements SpecificationRequest{
     }
 
     public Pageable getPageable() {
-        return PageRequest.of(page, size);
+        return PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
     }
 }
