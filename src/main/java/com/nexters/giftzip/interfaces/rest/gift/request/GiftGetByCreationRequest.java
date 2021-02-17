@@ -21,6 +21,9 @@ public class GiftGetByCreationRequest implements SpecificationRequest{
     private Order order;
 
     public static GiftGetByCreationRequest of(String createdBy, Integer page, Integer size, Boolean isReceivedGift, Order order) {
+        if(order == null) {
+            order = Order.DESC;
+        }
         return new GiftGetByCreationRequest(createdBy, isReceivedGift, page, size, order);
     }
 

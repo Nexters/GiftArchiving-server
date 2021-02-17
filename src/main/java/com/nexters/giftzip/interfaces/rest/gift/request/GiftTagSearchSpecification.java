@@ -25,7 +25,8 @@ public class GiftTagSearchSpecification implements SpecificationRequest{
     private int page;
     private int size;
     private String createdBy;
-    private Order order;
+    @Builder.Default
+    private Order order = Order.DESC;
 
     public Predicate getPredicate() {
         QGiftInfoDocument gift = QGiftInfoDocument.giftInfoDocument;
