@@ -1,6 +1,7 @@
 package com.nexters.giftzip.interfaces.rest.gift;
 
 import com.amazonaws.util.json.Jackson;
+import com.nexters.giftzip.interfaces.common.Order;
 import com.nexters.giftzip.interfaces.rest.gift.dto.GiftCreateDto;
 import com.nexters.giftzip.interfaces.rest.gift.mapper.GiftCreateDtoMapper;
 import com.nexters.giftzip.interfaces.rest.gift.request.*;
@@ -57,8 +58,9 @@ public class GiftController {
     @ApiOperation(value = "기록 목록 불러오기", notes = "선물 기록 목록을 불러온다.")
     @GetMapping("/user/{createdBy}")
     @ResponseBody
-    public GiftListResponse getGiftInfo(@PathVariable String createdBy, @RequestParam Integer page, @RequestParam Integer size, @RequestParam Boolean isReceiveGift) {
-        return giftService.getGiftListResponse(GiftGetByCreationRequest.of(createdBy, page, size, isReceiveGift));
+    public GiftListResponse getGiftInfo(@PathVariable String createdBy, @RequestParam Integer page, @RequestParam Integer size, @RequestParam Boolean isReceiveGift,
+                                        @RequestParam Order order) {
+        return giftService.getGiftListResponse(GiftGetByCreationRequest.of(createdBy, page, size, isReceiveGift, order));
     }
 
     @ApiOperation(value = "태그 검색", notes = "태그 검색")
@@ -74,6 +76,7 @@ public class GiftController {
                 .createdBy(createdBy)
                 .page(request.getPage())
                 .size(request.getSize())
+                .order(request.getOrder())
                 .build();
         return giftService.getGiftListResponse(giftTagSearchSpecification);
     }

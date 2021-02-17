@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
+import com.nexters.giftzip.interfaces.common.Order;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
@@ -24,6 +25,7 @@ public class GiftTagSearchSpecification implements SpecificationRequest{
     private int page;
     private int size;
     private String createdBy;
+    private Order order;
 
     public Predicate getPredicate() {
         QGiftInfoDocument gift = QGiftInfoDocument.giftInfoDocument;
@@ -51,6 +53,7 @@ public class GiftTagSearchSpecification implements SpecificationRequest{
     }
 
     public Pageable getPageable() {
-        return PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
+        Sort.Direction sort = order == Order.ASC ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return PageRequest.of(page, size, sort, "createdAt");
     }
 }

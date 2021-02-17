@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
+import com.nexters.giftzip.interfaces.common.Order;
 import com.nexters.giftzip.interfaces.common.tag.Category;
 import com.nexters.giftzip.interfaces.common.tag.Emotion;
 import com.nexters.giftzip.interfaces.common.tag.Reason;
@@ -28,4 +29,6 @@ public class GiftTagSearchRequest {
     private int page;
     @ApiModelProperty("size")
     private int size;
+    @ApiModelProperty("order")
+    private Order order;
 }
