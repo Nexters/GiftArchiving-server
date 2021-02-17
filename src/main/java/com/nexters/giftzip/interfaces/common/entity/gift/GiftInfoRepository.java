@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface GiftInfoRepository extends MongoRepository<GiftInfoDocument, String>, QuerydslPredicateExecutor<GiftInfoDocument> {
 
     Optional<GiftInfoDocument> findById(String objectId);
+    void deleteByCreatedBy(String token);
 }

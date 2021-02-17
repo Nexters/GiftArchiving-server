@@ -15,8 +15,14 @@ public class UserController {
 
     @ApiOperation(value = "회원가입", notes = "토큰값을 저장합니다.")
     @PostMapping("/signIn")
-    public UserSignInResponse kakaoSignIn(@RequestBody UserSignInRequest request) {
+    public UserSignInResponse signIn(@RequestBody UserSignInRequest request) {
         userService.signInUser(request);
         return UserSignInResponse.success();
+    }
+
+    @ApiOperation(value = "회원탈퇴")
+    @PostMapping("/withdrawal/{token}")
+    public void withdrawal(@PathVariable String token) {
+        userService.withdrawal(token);
     }
 }

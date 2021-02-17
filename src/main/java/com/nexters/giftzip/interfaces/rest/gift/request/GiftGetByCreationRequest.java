@@ -1,5 +1,6 @@
 package com.nexters.giftzip.interfaces.rest.gift.request;
 
+import com.nexters.giftzip.interfaces.common.Order;
 import com.nexters.giftzip.interfaces.common.entity.gift.QGiftInfoDocument;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
@@ -17,9 +18,10 @@ public class GiftGetByCreationRequest implements SpecificationRequest{
     private Boolean isReceivedGift;
     private int page;
     private int size;
+    private Order order;
 
-    public static GiftGetByCreationRequest of(String createdBy, Integer page, Integer size, Boolean isReceivedGift) {
-        return new GiftGetByCreationRequest(createdBy, isReceivedGift, page, size);
+    public static GiftGetByCreationRequest of(String createdBy, Integer page, Integer size, Boolean isReceivedGift, Order order) {
+        return new GiftGetByCreationRequest(createdBy, isReceivedGift, page, size, order);
     }
 
     public Predicate getPredicate() {
@@ -31,6 +33,7 @@ public class GiftGetByCreationRequest implements SpecificationRequest{
     }
 
     public Pageable getPageable() {
-        return PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
+        Sort.Direction sort = order == Order.ASC ? Sort.Direction.ASC : Sort.Direction.DESC;
+        return PageRequest.of(page, size, sort, "createdAt");
     }
 }
