@@ -59,7 +59,7 @@ public class GiftController {
     @GetMapping("/user/{createdBy}")
     @ResponseBody
     public GiftListResponse getGiftInfo(@PathVariable String createdBy, @RequestParam Integer page, @RequestParam Integer size, @RequestParam Boolean isReceiveGift,
-                                        @RequestParam Order order) {
+                                        @RequestParam(required = false) Order order) {
         return giftService.getGiftListResponse(GiftGetByCreationRequest.of(createdBy, page, size, isReceiveGift, order));
     }
 
