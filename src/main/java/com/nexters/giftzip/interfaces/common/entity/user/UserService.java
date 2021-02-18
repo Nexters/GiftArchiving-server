@@ -32,7 +32,7 @@ public class UserService {
 
     @Transactional
     public void withdrawal(String token) {
-        userRepository.deleteById(token);
+        userRepository.deleteByToken(token);
         giftInfoRepository.deleteByCreatedBy(token);
     }
 }
