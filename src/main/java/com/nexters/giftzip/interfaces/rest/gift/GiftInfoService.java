@@ -72,7 +72,6 @@ public class GiftInfoService {
         giftInfoDocument.setContent(request.getContent());
         giftInfoDocument.setEmotion(request.getEmotion());
         giftInfoDocument.setReason(request.getReason());
-        giftInfoDocument.setName(request.getName());
         giftInfoDocument.setReceiveDate(request.getReceiveDate());
         giftInfoRepository.save(giftInfoDocument);
     }
