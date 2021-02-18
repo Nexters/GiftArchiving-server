@@ -70,7 +70,6 @@ public class GiftInfoService {
         GiftInfoDocument giftInfoDocument = giftInfoRepository.findById(giftId).orElseThrow(() -> new NotFoundException(CommonErrorType.DATA_NOT_FOUND));
         giftInfoDocument.setCategory(request.getCategory());
         giftInfoDocument.setContent(request.getContent());
-        giftInfoDocument.setBgColor(request.getBgColor());
         giftInfoDocument.setEmotion(request.getEmotion());
         giftInfoDocument.setReason(request.getReason());
         giftInfoDocument.setName(request.getName());

@@ -21,7 +21,4 @@ public class GiftEditRequest {
     private Category category;
     private Emotion emotion;
     private Reason reason;
-    private String bgColor;
-
-
 }
